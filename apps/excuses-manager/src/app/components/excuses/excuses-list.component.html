@@ -1,0 +1,9 @@
+<h1 class="excuses-list-title">{{'homePage.title' | translate:{nb:6} }}</h1>
+
+<div class="excuses-list" *ngIf="excuses$ | async; let excuses">
+  <app-excuses-card *ngFor="let excuse of excuses" [excuse]="excuse" (favorite)="setFavorite($event)"></app-excuses-card>
+</div>
+
+<div class="selected-excuse" *ngIf="!!selectedExcuse">
+  Selected: {{selectedExcuse}}
+</div>

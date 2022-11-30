@@ -1,0 +1,7 @@
+<h2> {{'profile.title' | translate}} </h2>
+
+<div class="profile-details" *ngIf="profile$ | async; let profile">
+  <div class="profile-name">
+    {{'profile.name.label' | translate}} {{profile.name}} </div>
+  <div class="profile-email"> {{'profile.email.label' | translate}} {{profile.email}}</div>
+</div>

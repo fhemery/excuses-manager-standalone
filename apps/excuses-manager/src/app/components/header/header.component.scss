@@ -1,0 +1,28 @@
+.header {
+  display:flex;
+  width: 100%;
+  align-items: center;
+
+  div {
+    padding-left:1rem;
+    padding-right: 1rem;
+    border-left: 1px solid white;
+  }
+
+  .header-title {
+    cursor: pointer;
+  }
+
+  .header-favorites {
+    cursor: pointer;
+  }
+
+  .placeholder {
+    flex-grow: 2;
+  }
+
+  .account-button {
+    font-size: 2rem;
+    padding:0.5rem;
+  }
+}

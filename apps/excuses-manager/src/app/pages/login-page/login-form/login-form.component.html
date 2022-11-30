@@ -1,0 +1,27 @@
+<h2 class="login-title"> {{'login.title' | translate}} </h2>
+
+<div class="login-form">
+  <mat-card>
+    <mat-card-content>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div>
+          <mat-form-field>
+            <mat-label> {{'login.loginField.label' | translate}}</mat-label>
+            <input matInput type="text" formControlName="login">
+          </mat-form-field>
+          <div class="mat-error" *ngIf="login.invalid && login.touched">{{'login.loginField.errors.empty' | translate}}</div>
+        </div>
+        <div>
+          <mat-form-field>
+            <mat-label>{{'login.passwordField.label'| translate}}</mat-label>
+            <input matInput type="password" formControlName="password">
+          </mat-form-field>
+        </div>
+        <div class="login-button">
+          <button mat-raised-button color="primary" type="submit"
+          [disabled]="loginForm.invalid">{{'login.submitButton.label' | translate}}</button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -1,0 +1,18 @@
+<mat-toolbar color="primary">
+  <div class="header">
+    <div class="header-title" routerLink="/"> {{'app.title' | translate }}</div>
+    <div class="header-favorites" routerLink="/favorites"> {{'favorites.title' | translate }}</div>
+    <div class="placeholder"> &nbsp;</div>
+    <div class="login-button" *ngIf="!user">
+      <button mat-raised-button routerLink="/login"> {{'header.loginButton' | translate}}</button>
+    </div>
+    <div class="user-details" *ngIf="user">
+      <mat-icon class="account-button" [matMenuTriggerFor]="profile">account_circle</mat-icon>
+      <mat-menu #profile="matMenu">
+        <div mat-menu-item>{{'header.welcome' | translate:{name: user.email} }}</div>
+        <button mat-menu-item routerLink="/profile"> {{'header.myProfile' | translate}}</button>
+        <button mat-menu-item (click)="clickLogout()">{{'header.logoutButton' | translate}}</button>
+      </mat-menu>
+    </div>
+  </div>
+</mat-toolbar>
