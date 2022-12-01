@@ -6,13 +6,14 @@ import {
 import { AppComponent } from './app/app.component';
 import { appRoutes } from './app/app.routes';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { importProvidersFrom } from '@angular/core';
+import { importProvidersFrom, isDevMode } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from './environments/environment';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { provideHttpClient } from '@angular/common/http';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 bootstrapApplication(AppComponent, {
   providers: [
@@ -23,7 +24,13 @@ bootstrapApplication(AppComponent, {
       TranslateModule.forRoot(),
       AngularFireModule.initializeApp(environment.firebase),
       AngularFireAuthModule,
-      AngularFirestoreModule
+      AngularFirestoreModule,
+      ServiceWorkerModule.register('ngsw-worker.js', {
+        enabled: !isDevMode(),
+        // Register the ServiceWorker as soon as the application is stable
+        // or after 30 seconds (whichever comes first).
+        registrationStrategy: 'registerWhenStable:30000',
+      })
     ),
   ],
 }).catch((err) => console.error(err));

@@ -7,23 +7,30 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/excuses-manager",
         "index": "apps/excuses-manager/src/index.html",
         "main": "apps/excuses-manager/src/main.ts",
-        "polyfills": ["zone.js"],
+        "polyfills": [
+          "zone.js"
+        ],
         "tsConfig": "apps/excuses-manager/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
           "apps/excuses-manager/src/favicon.ico",
-          "apps/excuses-manager/src/assets"
+          "apps/excuses-manager/src/assets",
+          "apps/excuses-manager/src/manifest.webmanifest"
         ],
         "styles": [
           "@angular/material/prebuilt-themes/purple-green.css",
           "apps/excuses-manager/src/styles.scss"
         ],
-        "scripts": []
+        "scripts": [],
+        "serviceWorker": true,
+        "ngswConfigPath": "apps/excuses-manager/ngsw-config.json"
       },
       "configurations": {
         "production": {
@@ -90,7 +97,9 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}"
+      ],
       "options": {
         "jestConfig": "apps/excuses-manager/jest.config.ts",
         "passWithNoTests": true

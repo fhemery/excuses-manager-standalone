@@ -15,7 +15,7 @@ describe('AppService', () => {
 
   describe('getData', () => {
     it('should return "Welcome to excuses-back!"', () => {
-      expect(service.getExcuses()).toEqual({
+      expect(service.getExcuses(1)).toEqual({
         message: 'Welcome to excuses-back!',
       });
     });
